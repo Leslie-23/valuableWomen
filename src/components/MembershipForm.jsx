@@ -43,9 +43,10 @@ const MembershipForm = () => {
                 hover:bg-purple-100 transition duration-300 ease-in-out"
                 aria-label="Title"
               >
-                <option value="Mr">Mr</option>
-                <option value="Ms">Ms</option>
-                <option value="Mrs">Mrs</option>
+                <option value="Mr">Mr.</option>
+                <option value="Ms">Dr.</option>
+                <option value="Mrs">Mrs.</option>
+                <option value="Mrs">Ms.</option>
               </select>
 
               <input
@@ -74,19 +75,33 @@ const MembershipForm = () => {
                 focus:ring-2 focus:ring-purple-400 focus:border-purple-400 
                 hover:bg-purple-100 transition duration-300 ease-in-out"
             />
-            <input
+            {/* <input
               {...register("status")}
               placeholder="Status (Single/Married)"
               className="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-700 
                 focus:ring-2 focus:ring-purple-400 focus:border-purple-400 
                 hover:bg-purple-100 transition duration-300 ease-in-out"
-            />
+            /> */}
+            <select
+              {...register("Status")}
+              className="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-700 
+                focus:ring-2 focus:ring-purple-400 focus:border-purple-400 
+                hover:bg-purple-100 transition duration-300 ease-in-out"
+              aria-label="Title"
+            >
+              <option value="Single">Single.</option>
+              <option value="Married">Married.</option>
+              <option value="Divorced">Divorced.</option>
+              <option value="Separated">Separated.</option>
+            </select>
             <input
               {...register("dob")}
               type="date"
               className="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-700 
                 focus:ring-2 focus:ring-purple-400 focus:border-purple-400 
                 hover:bg-purple-100 transition duration-300 ease-in-out"
+              required
+              placeholder="Date Of Birth"
             />
             <input
               {...register("nationality")}
