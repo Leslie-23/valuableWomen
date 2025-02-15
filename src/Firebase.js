@@ -1,0 +1,43 @@
+import { initializeApp } from "firebase/app";
+import {
+  getAuth,
+  signInWithEmailLink,
+  sendSignInLinkToEmail,
+} from "firebase/auth";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCe-PCi0jkgdgudXIUQad-V_Xgbp8Cu3WY",
+  authDomain: "valuable-women.firebaseapp.com",
+  projectId: "valuable-women",
+  storageBucket: "valuable-women.firebasestorage.app",
+  messagingSenderId: "784291834523",
+  appId: "1:784291834523:web:12351991af01788869743e",
+  measurementId: "G-D4RSFYZE9V",
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+export { auth, sendSignInLinkToEmail, signInWithEmailLink };
+
+// Import the functions you need from the SDKs you need
+// import { initializeApp } from "firebase/app";
+// import { getAnalytics } from "firebase/analytics";
+// // TODO: Add SDKs for Firebase products that you want to use
+// // https://firebase.google.com/docs/web/setup#available-libraries
+
+// // Your web app's Firebase configuration
+// // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCe-PCi0jkgdgudXIUQad-V_Xgbp8Cu3WY",
+//   authDomain: "valuable-women.firebaseapp.com",
+//   projectId: "valuable-women",
+//   storageBucket: "valuable-women.firebasestorage.app",
+//   messagingSenderId: "784291834523",
+//   appId: "1:784291834523:web:12351991af01788869743e",
+//   measurementId: "G-D4RSFYZE9V"
+// };
+
+// // Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
