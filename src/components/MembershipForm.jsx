@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { auth, auth1, auth2, sendSignInLinkToEmail } from "../Firebase";
+import { auth1, auth2, sendSignInLinkToEmail } from "../Firebase";
 
 const URL =
   import.meta.env.MODE === "development"
@@ -11,23 +11,38 @@ const actionCodeSettings = {
   url: `${URL}/verify`, // Change this to your domain
   handleCodeInApp: true,
 };
-console.log(`${URL}`);
+
 console.log("Current Mode:", import.meta.env.MODE);
 console.log("Using URL:", URL);
-console.log(import.meta.env.VITE_FIREBASE_API_KEY_2);
+
 const MembershipForm = () => {
   const { register, handleSubmit, reset } = useForm();
   const [emailSent, setEmailSent] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  // List of auth instances to try
+  const authProviders = [auth1, auth2];
 
   const onSubmit = async (data) => {
-    try {
-      await sendSignInLinkToEmail(auth2, data.email, actionCodeSettings);
-      window.localStorage.setItem("emailForSignIn", data.email);
-      setEmailSent(true);
-      reset();
-    } catch (error) {
-      console.error("Error sending email:", error);
+    for (let i = 0; i < authProviders.length; i++) {
+      try {
+        console.log(`Attempting authentication with auth${i + 1}...`);
+        await sendSignInLinkToEmail(
+          authProviders[i],
+          data.email,
+          actionCodeSettings
+        );
+        window.localStorage.setItem("emailForSignIn", data.email);
+        setEmailSent(true);
+        reset();
+        console.log(`✅ Success with auth${i + 1}`);
+        return; // Exit loop on success
+      } catch (error) {
+        console.error(`❌ Error with auth${i + 1}:`, error);
+        setErrorMessage(error.message);
+      }
     }
+    console.error("⚠️ All authentication methods failed.");
   };
 
   return (

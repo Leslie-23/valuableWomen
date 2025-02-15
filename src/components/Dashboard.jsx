@@ -81,7 +81,7 @@ const Dashboard = () => {
 
       {/* Impact Stats */}
       <section className="bg-purple-100 py-12 md:py-16">
-        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-6 gap-6 text-center">
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-6 text-center">
           <motion.div className="p-6 bg-white rounded-lg shadow-md">
             <FaUsers className="text-purple-600 text-4xl mx-auto" />
             <h3 className="text-2xl font-bold mt-2">10,000+</h3>
