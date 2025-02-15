@@ -1,16 +1,20 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { auth, sendSignInLinkToEmail } from "../Firebase";
+import { auth, auth1, auth2, sendSignInLinkToEmail } from "../Firebase";
 
-import.meta.env.MODE === "development"
-  ? import.meta.env.VITE_URL_DEV
-  : import.meta.env.VITE_URL_PROD;
+const URL =
+  import.meta.env.MODE === "development"
+    ? import.meta.env.VITE_URL_DEV
+    : import.meta.env.VITE_URL_PROD;
 
 const actionCodeSettings = {
   url: `${URL}/verify`, // Change this to your domain
   handleCodeInApp: true,
 };
-
+console.log(`${URL}`);
+console.log("Current Mode:", import.meta.env.MODE);
+console.log("Using URL:", URL);
+console.log(import.meta.env.VITE_FIREBASE_API_KEY_2);
 const MembershipForm = () => {
   const { register, handleSubmit, reset } = useForm();
   const [emailSent, setEmailSent] = useState(false);

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { auth, signInWithEmailLink } from "../Firebase";
+import { auth, auth1, auth2, signInWithEmailLink } from "../Firebase";
 import { useNavigate } from "react-router-dom";
 
 const VerifyEmail = () => {
@@ -17,6 +17,22 @@ const VerifyEmail = () => {
 
         try {
           await signInWithEmailLink(auth, email, window.location.href);
+          window.localStorage.removeItem("emailForSignIn");
+          setMessage("Email verified successfully!");
+          setTimeout(() => navigate("/dashboard"), 2000);
+        } catch (error) {
+          setMessage("Verification failed. Please try again.");
+        }
+        try {
+          await signInWithEmailLink(auth1, email, window.location.href);
+          window.localStorage.removeItem("emailForSignIn");
+          setMessage("Email verified successfully!");
+          setTimeout(() => navigate("/dashboard"), 2000);
+        } catch (error) {
+          setMessage("Verification failed. Please try again.");
+        }
+        try {
+          await signInWithEmailLink(auth2, email, window.location.href);
           window.localStorage.removeItem("emailForSignIn");
           setMessage("Email verified successfully!");
           setTimeout(() => navigate("/dashboard"), 2000);
