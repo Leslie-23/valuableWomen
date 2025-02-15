@@ -21,7 +21,7 @@ const MembershipForm = () => {
 
   const onSubmit = async (data) => {
     try {
-      await sendSignInLinkToEmail(auth, data.email, actionCodeSettings);
+      await sendSignInLinkToEmail(auth2, data.email, actionCodeSettings);
       window.localStorage.setItem("emailForSignIn", data.email);
       setEmailSent(true);
       reset();
