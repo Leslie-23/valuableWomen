@@ -148,21 +148,21 @@ const Dashboard = () => {
         </h2>
         <div className="mt-6 grid md:grid-cols-3 gap-6">
           <Iframe
-            url="https://www.instagram.com/valuablewomen/"
+            url="https://www.instagram.com/val_uablewomen/"
             width="100%"
-            height="400px"
+            height="300px"
             className="rounded-lg shadow-md"
           />
           <Iframe
-            url="https://twitter.com/valuablewomen"
+            url="https://twitter.com/val_uablewomen"
             width="100%"
-            height="400px"
+            height="300px"
             className="rounded-lg shadow-md"
           />
           <Iframe
-            url="https://www.facebook.com/valuablewomen"
+            url="https://www.facebook.com/val_uablewomen"
             width="100%"
-            height="400px"
+            height="300px"
             className="rounded-lg shadow-md"
           />
         </div>
