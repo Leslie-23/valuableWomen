@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { auth, sendSignInLinkToEmail } from "../Firebase";
-// const URL = import.meta.env.URL_DEV;
-const URL = import.meta.env.URL_PROD;
+
+import.meta.env.MODE === "development"
+  ? import.meta.env.VITE_URL_DEV
+  : import.meta.env.VITE_URL_PROD;
+
 const actionCodeSettings = {
   url: `${URL}/verify`, // Change this to your domain
   handleCodeInApp: true,
@@ -94,15 +97,23 @@ const MembershipForm = () => {
               <option value="Divorced">Divorced.</option>
               <option value="Separated">Separated.</option>
             </select>
-            <input
-              {...register("dob")}
-              type="date"
-              className="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-700 
+            <div className="flex flex-col">
+              <label
+                htmlFor="dob"
+                className="text-gray-700 font-medium text-xs"
+              >
+                Date of Birth
+              </label>
+              <input
+                {...register("dob")}
+                type="date"
+                className="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-700 
                 focus:ring-2 focus:ring-purple-400 focus:border-purple-400 
                 hover:bg-purple-100 transition duration-300 ease-in-out"
-              required
-              placeholder="Date Of Birth"
-            />
+                required
+                placeholder="Date Of Birth"
+              />
+            </div>
             <input
               {...register("nationality")}
               placeholder="Nationality"
