@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { auth, sendSignInLinkToEmail } from "../Firebase";
-
+// const URL = import.meta.env.URL_DEV;
+const URL = import.meta.env.URL_PROD;
 const actionCodeSettings = {
-  url: "http://localhost:5173/verify", // Change this to your domain
+  url: `${URL}/verify`, // Change this to your domain
   handleCodeInApp: true,
 };
 
@@ -34,10 +35,12 @@ const MembershipForm = () => {
 
         {!emailSent ? (
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-white text-gray-700">
               <select
                 {...register("title")}
-                className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-purple-600"
+                className="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-700 
+                focus:ring-2 focus:ring-purple-400 focus:border-purple-400 
+                hover:bg-purple-100 transition duration-300 ease-in-out"
                 aria-label="Title"
               >
                 <option value="Mr">Mr</option>
@@ -48,7 +51,10 @@ const MembershipForm = () => {
               <input
                 {...register("firstName", { required: true })}
                 placeholder="First Name"
-                className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-purple-600"
+                className="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-700 
+                focus:ring-2 focus:ring-purple-400 focus:border-purple-400 
+                hover:bg-purple-100 transition duration-300 ease-in-out"
+                // aria-label={placeholder}
                 required
               />
             </div>
@@ -56,45 +62,61 @@ const MembershipForm = () => {
             <input
               {...register("lastName", { required: true })}
               placeholder="Last Name"
-              className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-purple-600"
+              className="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-700 
+                focus:ring-2 focus:ring-purple-400 focus:border-purple-400 
+                hover:bg-purple-100 transition duration-300 ease-in-out"
               required
             />
             <input
               {...register("occupation")}
               placeholder="Occupation"
-              className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-purple-600"
+              className="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-700 
+                focus:ring-2 focus:ring-purple-400 focus:border-purple-400 
+                hover:bg-purple-100 transition duration-300 ease-in-out"
             />
             <input
               {...register("status")}
               placeholder="Status (Single/Married)"
-              className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-purple-600"
+              className="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-700 
+                focus:ring-2 focus:ring-purple-400 focus:border-purple-400 
+                hover:bg-purple-100 transition duration-300 ease-in-out"
             />
             <input
               {...register("dob")}
               type="date"
-              className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-purple-600"
+              className="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-700 
+                focus:ring-2 focus:ring-purple-400 focus:border-purple-400 
+                hover:bg-purple-100 transition duration-300 ease-in-out"
             />
             <input
               {...register("nationality")}
               placeholder="Nationality"
-              className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-purple-600"
+              className="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-700 
+                focus:ring-2 focus:ring-purple-400 focus:border-purple-400 
+                hover:bg-purple-100 transition duration-300 ease-in-out"
             />
             <input
               {...register("address")}
               placeholder="Address"
-              className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-purple-600"
+              className="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-700 
+                focus:ring-2 focus:ring-purple-400 focus:border-purple-400 
+                hover:bg-purple-100 transition duration-300 ease-in-out"
             />
             <input
               {...register("email", { required: true })}
               type="email"
               placeholder="Email Address"
-              className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-purple-600"
+              className="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-700 
+                focus:ring-2 focus:ring-purple-400 focus:border-purple-400 
+                hover:bg-purple-100 transition duration-300 ease-in-out"
               required
             />
             <input
               {...register("phone")}
               placeholder="Phone Number"
-              className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-purple-600"
+              className="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-700 
+                focus:ring-2 focus:ring-purple-400 focus:border-purple-400 
+                hover:bg-purple-100 transition duration-300 ease-in-out"
             />
 
             <button
